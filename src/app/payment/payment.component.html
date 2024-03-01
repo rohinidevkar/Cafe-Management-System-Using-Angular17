@@ -1,0 +1,56 @@
+
+<img src="https://invezz.com/wp-content/uploads/2020/12/coffee-prices-50.jpg" class="card-img" height="800px" width="1200px">
+  <div class="card-img-overlay"><span class="border border-white"><br><br><br>
+    <div class="container mt-1 text-light">
+      <div class="row">
+        <div class="col-md-4 border p-3">
+          <h4>Registration</h4>
+          <form (ngSubmit)="pays()">
+            <div class="form-group">
+              <label for="menuItem">Select Menu Item:</label>
+               <select id="menuItem" name="menuItem" [(ngModel)]="selectedMenuItem" class="form-control border">      
+                @for (item of menuItems; track $index) {
+                <option>{{ item }}</option>
+                }
+               </select>
+               </div>
+               <div class="form-group">
+              <label for="username">How many items are you ordering :</label>
+              <input type="text" id="username" name="order" [(ngModel)]="pay.order" class="form-control border" required />
+            </div>
+            <div class="form-group">
+              <label for="cardNo">Card Number:</label>
+              <input type="tel" id="cardNo" name="cardNo" [(ngModel)]="pay.cardNo" class="form-control border" required />
+            </div>
+            <div class="form-group">
+                <label for="name">Name On your Card:</label>
+                <input type="name" id="name" name="name" [(ngModel)]="pay.name" class="form-control border" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" [(ngModel)]="pay.email" class="form-control border" required />
+              </div>
+            <button type="submit" class="btn btn-primary">Pay The Bill</button>
+          </form>
+        </div>
+    
+        <div class="col-md-6 mb-4">
+          <div class="border p-3">
+            <h2>Your Order:</h2>
+            <h4>{{selectedMenuItem}}</h4>
+            <h3>{{pay.order}}</h3>
+            <h2>{{pay.cardNo}}</h2>
+            <h2>{{pay.name}}</h2>
+            <h2>{{pay.email}}</h2>
+            @if (totalAmount > 0) {
+              <div class="mt-3">
+                <h4>Total Amount: Rs.{{ totalAmount }}</h4>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>    
+</div>
+
